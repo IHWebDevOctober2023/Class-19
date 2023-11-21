@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 // import the array of movie objects
 import moviesData from '../movies-data.json';
+import MovieCard from './MovieCard';
 
 function MovieList2() {
     // Declare a state variable "movies"
@@ -22,13 +23,7 @@ function MovieList2() {
             <ul>
                 {movies.map((eachMovie) => {
                     return (
-                        <li key={eachMovie._id}>
-                            <h2>{eachMovie.title}</h2>
-                            <h3>{eachMovie.director}</h3>
-                            {/* If we have oscars I want to display 🏆 */}
-                            <p>{eachMovie.hasOscars ? "🏆" : "🚫"}</p>
-                            <button onClick={() => deleteMovie(eachMovie._id)}>DELETE</button>
-                        </li>
+                        <MovieCard key={eachMovie._id} movie={eachMovie} deleteMovie={deleteMovie} />
                     )
                 })}
             </ul>
